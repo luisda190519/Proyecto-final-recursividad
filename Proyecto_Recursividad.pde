@@ -2,14 +2,14 @@ import processing.pdf.*;
 import java.lang.management.ManagementFactory;
 import com.sun.management.OperatingSystemMXBean;
 
-PImage img, img2, img3, img5, img4, img6, img7, img8, img9, img10, img11;
+PImage img, img2, img3, img5, img4, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16;
 int a[][]=new int[1000][1000];
 float b[][]=new float[100][100];
 float espacioh=50, espaciov=50;
 int dificultad=0, tiempo3=20, cont=0, caso=0, fila=1, colum=1, posx=0, posy=0, movx=0, movy=0, salidax=0, saliday=0, contador=0, laberinto=0, antex=0, antey=0, x, y, x2, y2, atrasx, atrasy, orden, repeticion=0, repeticion2=0, tiempo=0, tiempo2=0;
 boolean auxiliar=false, aux=false, aux2=false, aux3=false, fin=false, solucionado=false, solucionado2=false, iterativo=false, recursivo=false;
 int hilo[]=new int[100];
-int filas=15,columna=7;
+int filas=16, columna=8;
 String palabra[]=new String[100];
 double valores[]=new double[100];
 
@@ -33,6 +33,11 @@ void setup() {
   img9=loadImage("imagenes/inicio.png");
   img10=loadImage("imagenes/start.png");
   img11=loadImage("imagenes/fondo2.png");
+  img12=loadImage("imagenes/mas.png");
+  img13=loadImage("imagenes/menos.png");
+  img14=loadImage("imagenes/fondo4.png");
+  img15=loadImage("imagenes/fondo5.png");
+  img16=loadImage("imagenes/circulo2.png");
 
   font=loadFont("SegoeUI-BoldItalic-48.vlw");
   textFont(font);
@@ -60,6 +65,20 @@ void draw() {
 
     //fin
   } else if (caso==2) {
+    image(img14, 0, 0);
+    image(img10, 250, 570, 700, 100);
+    textSize(50);
+    text("Continuar", 470, 630);
+
+    image(img12, 800, 140, 130, 130);
+    image(img13, 250, 140, 130, 130);
+
+    image(img12, 800, 400, 130, 130);
+    image(img13, 250, 400, 130, 130);
+
+    text(""+filas, 550, 490);
+    text(""+columna, 550, 230);
+  } else if (caso==3) {
     image(img, 0, 0);
 
 
@@ -70,33 +89,7 @@ void draw() {
     }
 
 
-    //caso=2; //borra esto
-    if (solucionado==true) {
-      fill(27, 38, 49);
-      noStroke();
-      rect(30, 460, 550, 230, 25);
-      textSize(25);
-      fill(255, 255, 255);
-      text("Solucionado de manera iterativa", 50, 500);
-      text("Memoria ram Total "+total+" bytes", 50, 530);
-      text("Memoria ram utilizada "+usada+" bytes", 50, 560);
-      text("CPU del proceso "+cpu+" %", 50, 590);
-      text("CPU del sistema "+cpu2+" %", 50, 620);
-      text("Numero de intentos "+repeticion, 50, 650);
-    }
-    if (solucionado2==true) {
-      fill(27, 38, 49);
-      noStroke();
-      rect(630, 460, 550, 230, 25);
-      textSize(25);
-      fill(255, 255, 255);
-      text("Solucionado de manera recursiva", 650, 500);
-      text("Memoria ram Total "+total+" bytes", 650, 530);
-      text("Memoria ram utilizada "+usada2+" bytes", 650, 560);
-      text("CPU del proceso "+cpu3+" %", 650, 590);
-      text("CPU del sistema "+cpu4+" %", 650, 620);
-      text("Numero de intentos "+repeticion2, 650, 650);
-    }
+
     stroke(1);
 
     if (aux==false) {
@@ -140,11 +133,21 @@ void draw() {
 
 
     fill(0, 0, 0);
-    image(img3, 1000, 30, 100, 100);
+    if (iterativo==true) {
+      image(img8, 1000, 30, 100, 100);
+    } else {
+      image(img3, 1000, 30, 100, 100);
+      text("i", 1042, 100);
+    }
+
     textSize(50);
-    text("i", 1042, 100);
-    image(img3, 1000, 140, 100, 100);
-    text("R", 1035, 205);
+    
+    if (recursivo==true) {
+      image(img8, 1000, 140, 100, 100);
+    } else {
+      image(img3, 1000, 140, 100, 100);
+      text("R", 1035, 205);
+    }
     image(img6, 1000, 250, 100, 100);
 
     for (int i=0; i<=filas; i++) {
@@ -190,7 +193,40 @@ void draw() {
 
 
     //----------------------acaba pantalla---------------------------------------
-  } else if (caso==3) {
+  } else if (caso==4) {
+    image(img15, 0, 0);
+
+    fill(27, 38, 49);
+    noStroke();
+    rect(50, 30, 1100, 250, 25);
+    textSize(30);
+    fill(255, 255, 255);
+    text("Solucion iterativa:", 100, 70);
+    text("Memoria ram Totalal del sistema "+total+" bytes", 100, 110);
+    text("Memoria ram utilizada "+usada+" bytes", 100, 140);
+    text("uso de CPU del proceso "+cpu+" %", 100, 170);
+    text("uso de CPU del sistema "+cpu2+" %", 100, 200);
+    text("Numero de repeticiones "+repeticion, 100, 230);
+
+    fill(27, 38, 49);
+    noStroke();
+    rect(50, 300, 1100, 250, 25);
+    textSize(30);
+    fill(255, 255, 255);
+    text("Solucion recursiva:", 100, 350);
+    text("Memoria ram Total "+total+" bytes", 100, 380);
+    text("Memoria ram utilizada "+usada2+" bytes", 100, 410);
+    text("uso de CPU del proceso "+cpu3+" %", 100, 440);
+    text("uso de CPU del sistema "+cpu4+" %", 100, 470);
+    text("Numero de repeticiones "+repeticion2, 100, 500);
+
+
+    image(img10, 250, 580, 700, 100);
+    textSize(50);
+    text("Continuar", 470, 650);
+
+    //fin
+  } else if (caso==5) {
     image(img11, 0, 0);
     fill(66, 73, 73);
     // Manera que mas consumo de ram tuvo
@@ -282,7 +318,7 @@ void draw() {
 
 // solucion iteriativa
 void mouseClicked() {
-  if (mouseX>1000 && mouseX<1100 && mouseY>30 && mouseY<130 && caso==2 && iterativo==false) {
+  if (mouseX>1000 && mouseX<1100 && mouseY>30 && mouseY<130 && caso==3 && iterativo==false) {
     movx=posx;
     movy=posy;
 
@@ -571,7 +607,7 @@ void mouseClicked() {
   }
 
   //------------------- solucion recursiva ---------------------------------------------
-  if (mouseX>1000 && mouseX<1100 && mouseY>140 && mouseY<240 && caso==2 && recursivo==false) {
+  if (mouseX>1000 && mouseX<1100 && mouseY>140 && mouseY<240 && caso==3 && recursivo==false) {
     movx=posx;
     movy=posy;
 
@@ -595,7 +631,7 @@ void mouseClicked() {
   }
 
   //boton para reinicio de matriz 
-  if (mouseX>1000 && mouseX<1100 && mouseY>250 && mouseY<350 && caso==2 ) {
+  if (mouseX>1000 && mouseX<1100 && mouseY>250 && mouseY<350 && caso==3 ) {
 
     for (int i=0; i<=filas; i++) {
       for (int j=0; j<=columna; j++) {
@@ -613,8 +649,8 @@ void mouseClicked() {
   }
 
   // boton para continuar al analisis  
-  if (mouseX>30 && mouseX<130 && mouseY>30 && mouseY<130 && caso==2 && solucionado==true && solucionado2==true ) {
-    caso=3;
+  if (mouseX>30 && mouseX<130 && mouseY>30 && mouseY<130 && caso==3 && solucionado==true && solucionado2==true ) {
+    caso=4;
   }
 
 
@@ -637,6 +673,37 @@ void mouseClicked() {
     caso=2;
     dificultad=3;
   }
+
+
+  // boton de continuar para ver la matriz
+  if (mouseX>250 && mouseX<950 && mouseY>570 && mouseY<670 && caso==2) {
+    caso=3;
+    filas=filas-1;
+    columna=columna-1;
+  }
+
+  // boton de el cambio de fila y columna
+  if (mouseX>800 && mouseX<930 && mouseY>400 && mouseY<530 && caso==2 && filas<30) {
+    filas=filas+1;
+  }
+  if (mouseX>250 && mouseX<380 && mouseY>400 && mouseY<530 && caso==2 && filas>1) {
+    filas=filas-1;
+  }
+
+  if (mouseX>800 && mouseX<930 && mouseY>140 && mouseY<270 && caso==2 && columna<30) {
+    columna=columna+1;
+  }
+  if (mouseX>250 && mouseX<380 && mouseY>140 && mouseY<270 && caso==2 && columna>1) {
+    columna=columna-1;
+  }
+
+
+  // boton de continuar para pasar a ver las conclusiones
+  if (mouseX>250 && mouseX<950 && mouseY>580 && mouseY<680 && caso==4) {
+    caso=5;
+  }
+
+  //fin mouseClicked
 }
 
 //------------------ subrutina recursiva nivel de dificultad media--------------------------------
