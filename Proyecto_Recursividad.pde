@@ -134,60 +134,185 @@ void draw() {
 
     fill(0, 0, 0);
     if (iterativo==true) {
-      image(img8, 1000, 30, 100, 100);
+      image(img16, 1000, 30, 100, 100);
     } else {
       image(img3, 1000, 30, 100, 100);
       text("i", 1042, 100);
     }
 
     textSize(50);
-    
+
     if (recursivo==true) {
-      image(img8, 1000, 140, 100, 100);
+      image(img16, 1000, 140, 100, 100);
     } else {
       image(img3, 1000, 140, 100, 100);
       text("R", 1035, 205);
     }
     image(img6, 1000, 250, 100, 100);
 
-    for (int i=0; i<=filas; i++) {
-      for (int j=0; j<=columna; j++) {
+    if (filas<=15 && columna<=7) {
+      for (int i=0; i<=filas; i++) {
+        for (int j=0; j<=columna; j++) {
 
+          if (a[i][j]==0) {
+            fill(66, 73, 73);
+            rect(i*espacioh+170, j*espaciov+25, 50, 50);
+          } else if (a[i][j]==1) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 50, 50);
+          } else if (a[i][j]==5) {
+            fill(93, 173, 226);
+            rect(i*espacioh+170, j*espaciov+25, 50, 50);
+          }
+          if (a[i][j]==2) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 50, 50);
+            image(img4, i*espacioh+170, j*espaciov+25, 50, 50);
+          } else if (a[i][j]==3) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 50, 50);
+            image(img5, i*espacioh+170, j*espaciov+25, 50, 50);
+          }
 
+          if (i==salidax && j==saliday && a[i][j]==5) {
+            fill(46, 204, 113);
+            rect(i*espacioh+170, j*espaciov+25, 50, 50);
+            image(img5, i*espacioh+170, j*espaciov+25, 50, 50);
+          }
 
-        if (a[i][j]==0) {
-          fill(66, 73, 73);
-          rect(i*espacioh+170, j*espaciov+25, 50, 50);
-        } else if (a[i][j]==1) {
-          fill(255, 255, 255);
-          rect(i*espacioh+170, j*espaciov+25, 50, 50);
-        } else if (a[i][j]==5) {
-          fill(93, 173, 226);
-          rect(i*espacioh+170, j*espaciov+25, 50, 50);
+          if (i==salidax && j==saliday && a[i][j]==1) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 50, 50);
+            image(img5, i*espacioh+170, j*espaciov+25, 50, 50);
+          }
         }
-        if (a[i][j]==2) {
-          fill(255, 255, 255);
-          rect(i*espacioh+170, j*espaciov+25, 50, 50);
-          image(img4, i*espacioh+170, j*espaciov+25, 50, 50);
-        } else if (a[i][j]==3) {
-          fill(255, 255, 255);
-          rect(i*espacioh+170, j*espaciov+25, 50, 50);
-          image(img5, i*espacioh+170, j*espaciov+25, 50, 50);
-        }
+      }
+    } else if (filas<=25 && columna<=25) {
 
-        if (i==salidax && j==saliday && a[i][j]==5) {
-          fill(46, 204, 113);
-          rect(i*espacioh+170, j*espaciov+25, 50, 50);
-          image(img5, i*espacioh+170, j*espaciov+25, 50, 50);
-        }
+      for (int i=0; i<=filas; i++) {
+        for (int j=0; j<=columna; j++) {
 
-        if (i==salidax && j==saliday && a[i][j]==1) {
-          fill(255, 255, 255);
-          rect(i*espacioh+170, j*espaciov+25, 50, 50);
-          image(img5, i*espacioh+170, j*espaciov+25, 50, 50);
+          espacioh=25;
+          espaciov=25;
+
+          if (a[i][j]==0) {
+            fill(66, 73, 73);
+            rect(i*espacioh+170, j*espaciov+25, 25, 25);
+          } else if (a[i][j]==1) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 25, 25);
+          } else if (a[i][j]==5) {
+            fill(93, 173, 226);
+            rect(i*espacioh+170, j*espaciov+25, 25, 25);
+          }
+          if (a[i][j]==2) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 25, 25);
+            image(img4, i*espacioh+170, j*espaciov+25, 25, 25);
+          } else if (a[i][j]==3) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 25, 25);
+            image(img5, i*espacioh+170, j*espaciov+25, 25, 25);
+          }
+
+          if (i==salidax && j==saliday && a[i][j]==5) {
+            fill(46, 204, 113);
+            rect(i*espacioh+170, j*espaciov+25, 25, 25);
+            image(img5, i*espacioh+170, j*espaciov+25, 25, 25);
+          }
+
+          if (i==salidax && j==saliday && a[i][j]==1) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 25, 25);
+            image(img5, i*espacioh+170, j*espaciov+25, 25, 25);
+          }
+        }
+      }
+    } else if (filas<=50 && columna<=50) {
+
+      for (int i=0; i<=filas; i++) {
+        for (int j=0; j<=columna; j++) {
+
+          espacioh=13;
+          espaciov=13;
+
+          if (a[i][j]==0) {
+            fill(66, 73, 73);
+            rect(i*espacioh+170, j*espaciov+25, 13, 13);
+          } else if (a[i][j]==1) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 13, 13);
+          } else if (a[i][j]==5) {
+            fill(93, 173, 226);
+            rect(i*espacioh+170, j*espaciov+25, 13, 13);
+          }
+          if (a[i][j]==2) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 13, 13);
+            image(img4, i*espacioh+170, j*espaciov+25, 13, 13);
+          } else if (a[i][j]==3) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 13, 13);
+            image(img5, i*espacioh+170, j*espaciov+25, 13, 13);
+          }
+
+          if (i==salidax && j==saliday && a[i][j]==5) {
+            fill(46, 204, 113);
+            rect(i*espacioh+170, j*espaciov+25, 13, 13);
+            image(img5, i*espacioh+170, j*espaciov+25, 13, 13);
+          }
+
+          if (i==salidax && j==saliday && a[i][j]==1) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 13, 13);
+            image(img5, i*espacioh+170, j*espaciov+25, 13, 13);
+          }
+        }
+      }
+    } else if (filas<=100 && columna<=100) {
+
+      for (int i=0; i<=filas; i++) {
+        for (int j=0; j<=columna; j++) {
+
+          espacioh=6.5;
+          espaciov=6.5;
+
+          if (a[i][j]==0) {
+            fill(66, 73, 73);
+            rect(i*espacioh+170, j*espaciov+25, 6.5, 6.5);
+          } else if (a[i][j]==1) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 6.5, 6.5);
+          } else if (a[i][j]==5) {
+            fill(93, 173, 226);
+            rect(i*espacioh+170, j*espaciov+25, 6.5, 6.5);
+          }
+          if (a[i][j]==2) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 6.5, 6.5);
+            image(img4, i*espacioh+170, j*espaciov+25, 6.5, 6.5);
+          } else if (a[i][j]==3) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 6.5, 6.5);
+            image(img5, i*espacioh+170, j*espaciov+25, 6.5, 6.5);
+          }
+
+          if (i==salidax && j==saliday && a[i][j]==5) {
+            fill(46, 204, 113);
+            rect(i*espacioh+170, j*espaciov+25, 6.5, 6.5);
+            image(img5, i*espacioh+170, j*espaciov+25, 6.5, 6.5);
+          }
+
+          if (i==salidax && j==saliday && a[i][j]==1) {
+            fill(255, 255, 255);
+            rect(i*espacioh+170, j*espaciov+25, 6.5, 6.5);
+            image(img5, i*espacioh+170, j*espaciov+25, 6.5, 6.5);
+          }
         }
       }
     }
+
+
 
 
 
@@ -201,7 +326,7 @@ void draw() {
     rect(50, 30, 1100, 250, 25);
     textSize(30);
     fill(255, 255, 255);
-    text("Solucion iterativa:", 100, 70);
+    text("Solucion iterativa:", 100, 80);
     text("Memoria ram Totalal del sistema "+total+" bytes", 100, 110);
     text("Memoria ram utilizada "+usada+" bytes", 100, 140);
     text("uso de CPU del proceso "+cpu+" %", 100, 170);
@@ -344,7 +469,7 @@ void mouseClicked() {
           System.out.println("posx "+movx);
           System.out.println("posy "+movy);
 
-          if (contador==50000) {
+          if (contador==500) {
             fin=true;
             break;
           }
@@ -369,7 +494,7 @@ void mouseClicked() {
             if (laberinto==0) {
               cont=cont+1;
 
-              if (cont==50000) {
+              if (cont==500) {
                 System.out.println("no tiene solucion");
                 fin=true;
               }
@@ -421,6 +546,91 @@ void mouseClicked() {
               continue;
             }
             break;
+          }
+
+          while (fin==false) {
+            contador=contador+1;
+            System.out.println("posx "+movx);
+            System.out.println("posy "+movy);
+
+            if (contador==500) {
+              fin=true;
+              break;
+            }
+
+            if (movx==salidax && movy==saliday) {
+              System.out.println("solucionado");
+              fin=true;
+              solucionado=true;
+              iterativo=true;
+              usada=Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+              OperatingSystemMXBean bean = (com.sun.management.OperatingSystemMXBean) ManagementFactory
+                .getOperatingSystemMXBean();
+              cpu=bean.getProcessCpuLoad();
+              cpu2=bean.getSystemCpuLoad();
+            } else {
+              antex=movx;
+              antey=movy;
+
+              laberinto=(antex-movx)+(antey-movy);
+
+
+              if (laberinto==0) {
+                cont=cont+1;
+
+                if (cont==500) {
+                  System.out.println("no tiene solucion");
+                  fin=true;
+                }
+              }
+            }
+
+            orden=int(random(4));
+
+            switch(orden) {
+
+            case 0:
+              if (a[movx+1][movy]==1 || a[movx+1][movy]==3) {
+                movx=movx+1;
+                a[movx][movy]=5;
+                continue;
+              }
+              break;
+            case 1:
+
+              if (a[movx][movy+1]==1 || a[movx][movy+1]==3) {
+                movy=movy+1;
+                a[movx][movy]=5;
+                continue;
+              } 
+
+              break;
+            case 2:
+
+              if (a[movx-1][movy]==1 || a[movx-1][movy]==3) {
+                movx=movx-1;
+                a[movx][movy]=5;
+                continue;
+              } 
+
+              break;
+            case 3:
+
+              if (a[movx][movy-1]==1 || a[movx][movy-1]==3) {
+                movy=movy-1;
+                a[movx][movy]=5;
+                continue;
+              }
+              break;
+
+            default:
+              if (a[movx][movy-1]==1 || a[movx][movy-1]==3) {
+                movy=movy-1;
+                a[movx][movy]=5;
+                continue;
+              }
+              break;
+            }
           }
         }
       } else if (dificultad==2) {
@@ -683,14 +893,14 @@ void mouseClicked() {
   }
 
   // boton de el cambio de fila y columna
-  if (mouseX>800 && mouseX<930 && mouseY>400 && mouseY<530 && caso==2 && filas<30) {
+  if (mouseX>800 && mouseX<930 && mouseY>400 && mouseY<530 && caso==2 && filas<100) {
     filas=filas+1;
   }
   if (mouseX>250 && mouseX<380 && mouseY>400 && mouseY<530 && caso==2 && filas>1) {
     filas=filas-1;
   }
 
-  if (mouseX>800 && mouseX<930 && mouseY>140 && mouseY<270 && caso==2 && columna<30) {
+  if (mouseX>800 && mouseX<930 && mouseY>140 && mouseY<270 && caso==2 && columna<100) {
     columna=columna+1;
   }
   if (mouseX>250 && mouseX<380 && mouseY>140 && mouseY<270 && caso==2 && columna>1) {
@@ -718,7 +928,7 @@ void resolver(int a[][], int movx, int movy, int contador, int cont, int salidax
       System.out.println("\nposx "+movx);
       System.out.println("posy "+movy);
 
-      if (contador==500) {
+      if (contador==999) {
         fin=true;
       }
 
@@ -742,7 +952,7 @@ void resolver(int a[][], int movx, int movy, int contador, int cont, int salidax
         if (laberinto==0) {
           cont=cont+1;
 
-          if (cont==500) {
+          if (cont==999) {
             System.out.println("no tiene solucion");
             fin=true;
           }
